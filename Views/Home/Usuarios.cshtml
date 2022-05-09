@@ -6,6 +6,18 @@
 <h1 class="text-primary">Usuários</h1>
 <hr>
 <a href="/Home/Cadastrar" class="btn btn-primary">Novo Usuário</a>
+@if (TempData.ContainsKey("Excluiu"))
+{
+    var excluiu = (bool)TempData["Excluiu"];
+    if (excluiu)
+    {
+        <partial name="_Mensageminfo" model="@("Usuário excluido com sucesso")"> </partial>
+    }
+    else
+    {
+        <partial name="_Mensagemwarning" model="@("Não foi possivel excluir o usuário.")"> </partial>
+    }
+}
 <table class="table">
     <thead>
         <tr>
@@ -28,3 +40,11 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="/lib/bootstrap5/dist/js/bootstrap.js"></script>
+}
+
+@section LogoPagina {
+    <img src="/img/usuarios.png" height="24" class="d-inline-block align-text-bottom">
+}

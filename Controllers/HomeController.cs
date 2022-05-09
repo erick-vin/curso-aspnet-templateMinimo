@@ -53,6 +53,7 @@ namespace UsandoViews.Controllers
         [HttpPost]
         public IActionResult Excluir(Usuario usuario)
         {
+            TempData["Excluiu"] = Usuario.Excluir(usuario.Id);
             Usuario.Excluir(usuario.Id);
             return RedirectToAction("Usuarios");
         }
